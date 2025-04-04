@@ -1,0 +1,41 @@
+services:
+  db:
+    image: mysql:8
+    container_name: container_store_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root  # تأكد من ضبط كلمة مرور الرووت فقط
+      MYSQL_DATABASE: store  # اسم قاعدة البيانات
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database.sql:/docker-entrypoint-initdb.d/database.sql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: container_store_phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+    depends_on:
+      - db
+
+  web:
+    image: image_my_store
+    container_name: container_store_web
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: store
+    depends_on:
+      - db
+
+volumes:
+  db_data:
