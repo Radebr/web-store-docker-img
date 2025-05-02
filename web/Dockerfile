@@ -9,7 +9,7 @@ RUN a2enmod rewrite
 COPY . /var/www/html/
 
 # نسخ ملف تكوين Apache (اختياري)
-COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
+COPY web/apache-config.conf /etc/apache2/sites-available/000-default.conf
 
 # تشغيل Apache
 CMD ["apache2-foreground"]
