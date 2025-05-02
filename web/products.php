@@ -38,10 +38,15 @@
 
         <?php
         // إعداد بيانات الاتصال
-        $host = "db"; // هذا هو اسم الخدمة التي حددتها في docker-compose.yml
-        $dbuser = "root";
-        $dbpass = "root"; // تأكد من مطابقة كلمة المرور في docker-compose.yml
-        $dbname = "store";
+        #$host = "db"; // هذا هو اسم الخدمة التي حددتها في docker-compose.yml
+        #$dbuser = "root";
+        #$dbpass = "root"; // تأكد من مطابقة كلمة المرور في docker-compose.yml
+        #$dbname = "store";
+
+    	$host = getenv('DB_HOST');  //render deploy
+    	$dbuser = getenv('DB_USER');
+    	$dbpass = getenv('DB_PASSWORD');
+    	$dbname = getenv('DB_NAME');
 
         // إنشاء الاتصال
         $con = mysqli_connect($host, $dbuser, $dbpass, $dbname);
