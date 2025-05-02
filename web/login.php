@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <?php
         // إعداد بيانات الاتصال
-        $host = "db";
-        $dbuser = "root";
-        $dbpass = "root";
-        $dbname = "store";
-
+        #$host = "db";
+        #$dbuser = "root";
+        #$dbpass = "root";
+        #$dbname = "store";
+	$host = getenv('DB_HOST');  
+	$dbuser = getenv('DB_USER');
+	$dbpass = getenv('DB_PASSWORD');
+	$dbname = getenv('DB_NAME');
         // إنشاء الاتصال
         $con = mysqli_connect($host, $dbuser, $dbpass, $dbname);
 
