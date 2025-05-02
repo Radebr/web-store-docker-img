@@ -5,7 +5,7 @@
         #$dbuser = "root";
         #$dbpass = "root";
         #$dbname = "store";
-	$host = getenv('DB_HOST');  
+	$host = getenv('DB_HOST');  //render deploy
 	$dbuser = getenv('DB_USER');
 	$dbpass = getenv('DB_PASSWORD');
 	$dbname = getenv('DB_NAME');
